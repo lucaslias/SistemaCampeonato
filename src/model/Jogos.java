@@ -6,6 +6,7 @@ public class Jogos {
 	private String timeb;
 	private String Rodada;
 	private String dataRod;
+	private String id;
 	
 	public String getTimeA() {
 		return timeA;
@@ -30,6 +31,12 @@ public class Jogos {
 	}
 	public void setDataRod(String dataRod) {
 		this.dataRod = dataRod;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }

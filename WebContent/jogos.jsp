@@ -33,8 +33,20 @@
 						href="http://localhost:8080/CampeonatoPaulista/">Home</a></li>
 
 					<li class="nav-item"><a class="nav-link"
-						href="http://localhost:8080/CampeonatoPaulista/grupos.jsp">Tabela
-							de Grupo</a></li>
+						href="http://localhost:8080/CampeonatoPaulista/grupos.jsp">Tabela de Grupo</a></li>
+							
+				    <li class="nav-item">
+          				<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/tabela.jsp">Classificação por Grupos</a>
+        			</li>
+        
+        			<li class="nav-item">
+          				<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/TabelaGeral.jsp">Classificação Geral</a>
+        			</li>
+        
+        			<li class="nav-item">
+          				<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/Quartas.jsp">Quartas de final</a>
+        			</li>
+        			
 				</ul>
 				<span class="navbar-text"> feito por: Lucas Guilherme </span>
 			</div>
@@ -45,8 +57,8 @@
 	
 	<center>
 		<form action="Mostrajogos" method="post">
-			<input type="date" name="data" id="data"> <input
-				type="submit" name="enviar" id="inviar" value="ver Jogos">
+			<input type="date" name="data" id="data"> 
+			<input type="submit" name="enviar" id="inviar" value="ver Jogos">
 		</form>
 		
 		<br><br>
@@ -61,19 +73,48 @@
 						<thead>
 							<tr align="center">
 								<th>Time A</th>
+								<th>placar</th>
+								<th> x </th>
+								<th>placar</th>
 								<th>Time b</th>
 								<th>Rodada</th>
 							</tr>
 						</thead>
 						<tbody>
 
+						<form action="insereResultado" method="post">
+						
+						<c:set var ="contA" value="1" scope="page"> </c:set>
+						<c:set var ="contB" value="9" scope="page"> </c:set>
+						<c:set var ="contC" value="20" scope="page"> </c:set>
+						
 							<c:forEach var="jogoN" items="${jogo}">
 								<tr align="center" class="table-active">
 									<td>${jogoN.getTimeA()}</td>
+									
+									<input type ="hidden" name="${contC}" value="${jogoN.getId()}"/>
+									
+									<td><input type="number" name="${contA}" placeholder="0"></td>
+																		
+									<td> x </td>
+									
+									<td><input type="number" name="${contB}" placeholder="0"></td>
+									
 									<td>${jogoN.getTimeb()}</td>
 									<td>${jogoN.getRodada()}</td>
+									<td>${jogoN.getId()}</td>
+	
 								</tr>
+								
+							<c:set var="contA" value="${contA+1}" scope="page"/>
+							<c:set var="contB" value="${contB+1}" scope="page"/>
+							<c:set var="contC" value="${contC+1}" scope="page"/>							
 							</c:forEach>
+							
+							<tr align="center"> 
+								<td colspan="6"> <input type="submit" name="enviar" id="inviar" value="enviar"> </td>
+							</tr>
+						</form>
 
 						</tbody>
 					</table>

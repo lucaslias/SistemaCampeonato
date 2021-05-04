@@ -33,6 +33,19 @@ body {
          <li class="nav-item">
           <a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/jogos.jsp">Tabela de Jogos</a>
         </li>
+        
+   		<li class="nav-item">
+        	<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/tabela.jsp">Classificação por Grupos</a>
+        </li>
+        
+        <li class="nav-item">
+        	<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/TabelaGeral.jsp">Classificação Geral</a>
+        </li>
+        
+        <li class="nav-item">
+        	<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/Quartas.jsp">Quartas de final</a>
+        </li>
+        
       </ul>
       <span class="navbar-text">
         feito por: Lucas Guilherme

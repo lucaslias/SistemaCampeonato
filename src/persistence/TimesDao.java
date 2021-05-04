@@ -5,11 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Grupo;
 import model.Jogos;
+import model.JogosResultado;
 //import java.sql.Types;
 
 public class TimesDao {
@@ -51,6 +53,7 @@ public class TimesDao {
 	    	jogo.setTimeA(rs.getString(1));
 	    	jogo.setTimeb(rs.getString(2));
 	    	jogo.setRodada(rs.getString(3));
+	    	jogo.setId(rs.getString(4));
 	    	
 	    	System.out.println("entrou dao");
 	    	System.out.println("data no dao" + data);
@@ -64,6 +67,22 @@ public class TimesDao {
 		
 		return jogosLista;
 	
+	}
+	
+	public String insereResultado(ArrayList<JogosResultado>resultJogo) throws SQLException{
+		System.out.println("chegou no lugar de inserir");
+		String sql = "{CALL InsereGols(?, ?, ?)}";
+		CallableStatement cs = c.prepareCall(sql);		
+		
+		for(JogosResultado ler : resultJogo) {
+			cs.setInt(1, Integer.parseInt(ler.getGolsA()));
+			cs.setInt(2, Integer.parseInt(ler.getGolsB()));
+			cs.setInt(3, Integer.parseInt(ler.getIdRodada()));
+			cs.execute();
+		}
+		
+
+		return "foi";
 	}
 	
 	

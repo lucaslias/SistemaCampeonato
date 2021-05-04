@@ -19,7 +19,7 @@
 	<!------------ menu das coisa ---------------->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Bem Vindo ao Campeonato Paulista</a>
+			<a class="navbar-brand" href="#">Campeonato Paulista</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarText"
 				aria-controls="navbarText" aria-expanded="false"
@@ -33,8 +33,21 @@
 						href="http://localhost:8080/CampeonatoPaulista/">Home</a></li>
 
 					<li class="nav-item"><a class="nav-link"
-						href="http://localhost:8080/CampeonatoPaulista/jogos.jsp">Tabela
-							de Jogos</a></li>
+						href="http://localhost:8080/CampeonatoPaulista/jogos.jsp">Tabela de Jogos</a>
+					</li>
+					
+					<li class="nav-item">
+          				<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/tabela.jsp">Classificação por Grupos</a>
+        			</li>
+        
+        			<li class="nav-item">
+          				<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/TabelaGeral.jsp">Classificação Geral</a>
+        			</li>
+        
+        			<li class="nav-item">
+          				<a class="nav-link" href="http://localhost:8080/CampeonatoPaulista/Quartas.jsp">Quartas de final</a>
+        			</li>
+							
 				</ul>
 				<span class="navbar-text"> feito por: Lucas Guilherme </span>
 			</div>
