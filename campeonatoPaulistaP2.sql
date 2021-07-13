@@ -18,21 +18,21 @@ select * from grupos
 select * from times
 
 INSERT INTO times VALUES
-(1,'Santos','Santos', 'Estádio Urbano Caldeira',1),
-(2,'Palmeiras','São Paulo','Allianz Parque',1),
-(3,'Corinthians','São Paulo','Neo Química Arena',1),
-(4,'São Paulo','São Paulo','Estádio Cícero Pompeu de Toledo',1),
-(5,'Ponte Preta','Campinas','Estádio Moisés Lucarelli',1),
-(6,'Guarani','Campinas','Estádio Brinco de Ouro da Princesa',1),
-(7,'São Bento','Sorocaba','Estádio Municipal de Sorocaba Walter Ribeiro',1),
-(8,'Novorizontino','Novo Horizonte','Estádio Jorge Ismael de Biasi',1),
-(9,'RB Brasil','Campinas', 'Estádio Moisés Lucarelli',1),
-(10,'Mirassol','Mirassol','Estádio José Maria de Campos Maia',1),
-(11,'Ferroviária','Araraquara','Arena Fonte Luminosa',1),
-(12,'Bragantino','Bragança Paulista','Estádio Nabi Abi Chedid',1),
-(13,'São Caetano','São Caetano do Sul','Estádio Municipal Anacleto Campanella',1),
-(14,'Botafogo-SP','Ribeirão Preto','Estádio Santa Cruz - Botafogo FC Eurobike',1),
-(15,'Ituano','Itu','Estádio Municipal Doutor Novelli Júnior',1),
+(1,'Santos','Santos',Â 'EstÃ¡dio Urbano Caldeira',1),
+(2,'Palmeiras','SÃ£o Paulo','Allianz Parque',1),
+(3,'Corinthians','SÃ£o Paulo','Neo QuÃ­mica Arena',1),
+(4,'SÃ£o Paulo','SÃ£o Paulo','EstÃ¡dio CÃ­cero Pompeu de Toledo',1),
+(5,'Ponte Preta','Campinas','EstÃ¡dio MoisÃ©s Lucarelli',1),
+(6,'Guarani','Campinas','EstÃ¡dio Brinco de Ouro da Princesa',1),
+(7,'SÃ£o Bento','Sorocaba','EstÃ¡dio Municipal de Sorocaba Walter Ribeiro',1),
+(8,'Novorizontino','Novo Horizonte','EstÃ¡dio Jorge Ismael de Biasi',1),
+(9,'RB Brasil','Campinas',Â 'EstÃ¡dio MoisÃ©s Lucarelli',1),
+(10,'Mirassol','Mirassol','EstÃ¡dio JosÃ© Maria de Campos Maia',1),
+(11,'FerroviÃ¡ria','Araraquara','Arena Fonte Luminosa',1),
+(12,'Bragantino','BraganÃ§a Paulista','EstÃ¡dio Nabi Abi Chedid',1),
+(13,'SÃ£o Caetano','SÃ£o Caetano do Sul','EstÃ¡dio Municipal Anacleto Campanella',1),
+(14,'Botafogo-SP','RibeirÃ£o Preto','EstÃ¡dio Santa Cruz - Botafogo FC Eurobike',1),
+(15,'Ituano','Itu','EstÃ¡dio Municipal Doutor Novelli JÃºnior',1),
 (16,'Oeste','Barueri','Arena Barueri',1)
 
 ALTER PROCEDURE SP_Grupo(@num SMALLINT, @retorno CHAR(1) OUTPUT)
@@ -109,7 +109,7 @@ AS
 
 		IF ( (@cod IS NULL) OR (@cod='') )
 		BEGIN
-			PRINT 'o numero selecionado não está disponivel'
+			PRINT 'o numero selecionado nÃ£o estÃ¡ disponivel'
 			SET @cont = @cont + 0
 		END 
 		ELSE
@@ -119,7 +119,7 @@ AS
 
 			IF @tamanho >= 4
 			BEGIN	
-				PRINT 'o grupo já está cheio'
+				PRINT 'o grupo jÃ¡ estÃ¡ cheio'
 				SET @cont = @cont + 0
 			END
 			ELSE
@@ -135,7 +135,7 @@ AS
 	select * from grupos ORDER BY grupo
 	select * from times
 
-/* ----------------------------- ATE AQUI FUNCIONA ----------------------------------- */
+
 
 CREATE PROCEDURE SP_Verifica(@time smallint, @rodada smallint, @retorno varchar(10) output)
 AS
@@ -152,7 +152,7 @@ AS
 		set @retorno = 'nao'
 	end 
 
-/* -----------------------------  ESSA PROCEDURE TB FUNCIONA ----------------------------------- */
+
 alter PROCEDURE SP_FormarJogo
 AS
 	TRUNCATE table jogos
@@ -378,14 +378,14 @@ select * from fn_jogos ('2019-01-23')
 -- mudanca tabela jogos(adicionei a coluna de gols)
 
 /* Triggers grupos e valor => nao permitir NSERT, UPDATE ou DELETE
-   Trigger Jogo => não permitir INSERT e DELETE */
+   Trigger Jogo => nÃ£o permitir INSERT e DELETE */
 
 CREATE TRIGGER TriggerTimes ON times
 FOR INSERT, DELETE, UPDATE
 AS
 BEGIN
 	ROLLBACK TRANSACTION
-	RAISERROR('Não é permitido excluir, inserir ou atualizar registros nessa tabela serviços', 16, 1)
+	RAISERROR('NÃ£o Ã© permitido excluir, inserir ou atualizar registros nessa tabela serviÃ§os', 16, 1)
 END
 
 
@@ -394,7 +394,7 @@ FOR INSERT, DELETE, UPDATE
 AS
 BEGIN
 	ROLLBACK TRANSACTION
-	RAISERROR('Não é permitido excluir, inserir ou atualizar registros nessa tabela serviços', 16, 1)
+	RAISERROR('NÃ£o Ã© permitido excluir, inserir ou atualizar registros nessa tabela serviÃ§os', 16, 1)
 END
 
 CREATE TRIGGER TriggerJogos ON jogos
@@ -402,7 +402,7 @@ FOR INSERT, DELETE
 AS
 BEGIN
 	ROLLBACK TRANSACTION
-	RAISERROR('Não é permitido excluir, inserir ou atualizar registros nessa tabela serviços', 16, 1)
+	RAISERROR('NÃ£o Ã© permitido excluir, inserir ou atualizar registros nessa tabela serviÃ§os', 16, 1)
 END
 
 --Procedure que insere o placar dos jogos
@@ -420,7 +420,7 @@ AS
 
 	select * from jogos
 
---função para calcular as tabelas
+--funÃ§Ã£o para calcular as tabelas
 ALTER FUNCTION fn_tabelaGrupos(@numGrupo CHAR)
 RETURNS @grupo TABLE(
 nomeTime VARCHAR(50),
@@ -457,7 +457,7 @@ BEGIN
 			SET @time = (SELECT TOP(1) codigoTime from grupos WHERE grupo = @numGrupo AND
 				(codigoTime not in (SELECT TOP(@contTimeTabela) codigoTime FROM grupos WHERE grupo = @numGrupo)))	
 
-			--zerando as informações 
+			--zerando as informaÃ§Ãµes 
 			SET @nome = null
 			SET @jogos = 0
 			SET @vitorias = 0
@@ -567,7 +567,7 @@ BEGIN
 	RETURN
 END
 
---Função para montar a tabela geral
+--FunÃ§Ã£o para montar a tabela geral
 ALTER FUNCTION fn_tabelaGeral()
 RETURNS @tabela TABLE(
 nomeTime VARCHAR(50),
